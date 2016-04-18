@@ -3,53 +3,34 @@
 <head>
         <meta charset="utf-8" />
     <title>联润进出口公司视频</title>
-    <style type="text/css">
-    #video_pop {
-    z-index: 9999; 
-    position: absolute; 
-    top: 0px; 
-    left: 0px; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0,0,0,0.5) url(images/myloading2.gif) no-repeat 50% 50%; 
-    display: none;
-    cursor: pointer;
-}
-
-#the_Video {
-    width: 50%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-}
-    
+ <link href="//cdn.bootcss.com/video.js/5.8.0/video-js.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/video.js/5.8.0/video.min.js"></script>
+<style type="text/css">
+body{margin:0; padding:0;}
 </style>
-
-     <script>
-function onVideoClick(theLink) {
-    document.getElementById("video_pop").innerHTML = "<video autoplay muted loop id=\"the_Video\"><source src=\""+theLink+"\" type=\"video/webm\"></video>";
-    document.getElementById("video_pop").style.display="block";
-} 
-
-function onPopClick() {
-    document.getElementById("video_pop").style.display="none";
-    document.getElementById("video_pop").innerHTML = ""; 
-}
-
-function playLRVideo(){
-    onVideoClick('lianrun.mp4')
-}
-     </script>
-
-
 </head>
 <body>
-        <div id="video_pop" onclick="javascript:history.go(-1)"></div>
+
+<video id="lianrun" class="video-js vjs-default-skin" controls
+ preload="auto" width="640" height="264" poster="lianrun-poster.jpg">
+  <source src="lianrun.mp4" type="video/mp4">
+  <p class="vjs-no-js">
+    请使用手机或非IE浏览器查看本视频
+  </p>
+</video>
 <script type="text/javascript">
-     onVideoClick('lianrun.mp4')
+var player = videojs('lianrun', {
+    width: window.innerWidth,
+    height: window.innerHeight
+}, function() {
+  // console.log('Good to go!');
+  this.play(); // if you don't trust autoplay for some reason
+
+  // How about an event listener?
+  this.on('ended', function() {
+    
+  });
+});
 </script>
 </body>
 </html>
