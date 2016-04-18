@@ -9,7 +9,45 @@
 		<meta id="eqMobileViewport" name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no" servergenerated="true">
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 		<title></title>
+<style type="text/css">
+    #video_pop {
+    z-index: 9999; 
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5) url(images/myloading2.gif) no-repeat 50% 50%; 
+    display: none;
+    cursor: pointer;
+}
 
+#the_Video {
+    width: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+    
+</style>
+     <script>
+function onVideoClick(theLink) {
+    document.getElementById("video_pop").innerHTML = "<video autoplay muted loop id=\"the_Video\"><source src=\""+theLink+"\" type=\"video/webm\"></video>";
+    document.getElementById("video_pop").style.display="block";
+} 
+
+function onPopClick() {
+    document.getElementById("video_pop").style.display="none";
+    document.getElementById("video_pop").innerHTML = ""; 
+}
+
+function playLRVideo(){
+    onVideoClick('lianrun.mp4')
+}
+     </script>
 		<!-- compiled CSS -->
 		<link rel="stylesheet" href="eqShow-3.1.5_view.css"/>
 	</head>
@@ -50,6 +88,9 @@
 		<script>
 			 
 		</script>
+
+        <div id="video_pop" onclick="onPopClick()"></div>
+
 	</body>
 	<script>
 		var web_site='http://unitedasia.com.cn';
@@ -72,6 +113,6 @@
     <script src="images/jquery.min.js"></script>
 	<!-- compiled JavaScript -->
 	 <script type="text/javascript" src="images/eqShow-3.1.5_view.js"></script>
-     
+
 
 </html>
